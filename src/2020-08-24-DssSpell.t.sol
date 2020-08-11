@@ -231,23 +231,23 @@ contract DssSpellTest is DSTest, DSMath {
         return true;
     }
 
-    // function testSpellIsCast() public {
-    //     if(address(spell) != address(MAINNET_SPELL)) {
-    //         assertEq(spell.expiration(), (now + 30 days));
-    //     } else {
-    //         assertEq(spell.expiration(), (SPELL_CREATED + 30 days));
-    //     }
+    function testSpellIsCast() public {
+        if(address(spell) != address(MAINNET_SPELL)) {
+            assertEq(spell.expiration(), (now + 30 days));
+        } else {
+            assertEq(spell.expiration(), (SPELL_CREATED + 30 days));
+        }
 
-    //     checkSystemValues(beforeSpell);
+        checkSystemValues(beforeSpell);
 
-    //     vote();
-    //     scheduleWaitAndCast();
-    //     assertTrue(spell.done());
+        vote();
+        scheduleWaitAndCast();
+        assertTrue(spell.done());
 
-    //     checkSystemValues(afterSpell);
+        checkSystemValues(afterSpell);
 
-    //     checkCollateralValues("PAXUSD-A", afterSpell);
-    // }
+        checkCollateralValues("PAXUSD-A", afterSpell);
+    }
 
     function testSpellIsCast_INTEGRATION() public {
         vote();
